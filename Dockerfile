@@ -1,17 +1,17 @@
-# Use an official OpenJDK image as base
+# Use official OpenJDK 17 image
 FROM openjdk:17-jdk-slim
 
-# Set working directory
+# Set working directory inside container
 WORKDIR /app
 
-# Copy Maven wrapper and project files
+# Copy everything
 COPY . .
 
-# Package the application (skip tests for faster builds)
+# Build the app
 RUN ./mvnw clean package -DskipTests
 
-# Expose the default Spring Boot port
+# Expose Spring Boot port
 EXPOSE 8080
 
-# Run the built jar
+# Run the JAR file
 CMD ["java", "-jar", "target/notesapi-0.0.1-SNAPSHOT.jar"]
