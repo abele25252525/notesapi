@@ -1,0 +1,33 @@
+name: notes_app
+description: "A simple notes app with Spring Boot backend and Flutter frontend."
+publish_to: 'none' # Prevent accidental publishing to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  http: ^1.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  flutter_launcher_icons: ^0.14.1  # 🆕 Added for app icons
+
+flutter:
+  uses-material-design: true
+
+  # 🖼️ Include your app icon asset
+  assets:
+    - assets/icon/app_icon.png
+
+# ⚙️ Configuration for app launcher icons
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/app_icon.png"
