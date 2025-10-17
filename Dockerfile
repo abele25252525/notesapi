@@ -1,17 +1,20 @@
-# Use official OpenJDK 17 image
-FROM openjdk:17-jdk-slim
+# Use official OpenJDK 21 image
+FROM openjdk:21-jdk-slim
 
-# Set working directory inside container
+# Set working directory
 WORKDIR /app
 
 # Copy everything
 COPY . .
 
-# Build the app
+# Make mvnw executable (important on Linux)
+RUN chmod +x mvnw
+
+# Build Spring Boot app
 RUN ./mvnw clean package -DskipTests
 
-# Expose Spring Boot port
+# Expose port 8080
 EXPOSE 8080
 
-# Run the JAR file
+# Run the built JAR file
 CMD ["java", "-jar", "target/notesapi-0.0.1-SNAPSHOT.jar"]
