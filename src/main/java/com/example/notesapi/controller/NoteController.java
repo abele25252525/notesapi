@@ -18,12 +18,6 @@ public class NoteController {
         this.noteRepository = noteRepository;
     }
 
-    // 🏠 Root endpoint for Render and testing
-    @GetMapping("/")
-    public String home() {
-        return "✅ Notes API is running and connected successfully!";
-    }
-
     // 🟢 GET all notes
     @GetMapping
     public ResponseEntity<List<Note>> getAllNotes() {
@@ -56,7 +50,7 @@ public class NoteController {
     public ResponseEntity<Void> deleteNote(@PathVariable String id) {
         if (noteRepository.existsById(id)) {
             noteRepository.deleteById(id);
-            System.out.println("🗑️ Deleted note with ID: " + id); // Helpful log for debugging
+            System.out.println("🗑️ Deleted note with ID: " + id);
             return ResponseEntity.noContent().build();
         } else {
             System.out.println("⚠️ Tried to delete non-existent note ID: " + id);
