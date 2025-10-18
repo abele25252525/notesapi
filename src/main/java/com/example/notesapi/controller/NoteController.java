@@ -5,7 +5,6 @@ import com.example.notesapi.repository.NoteRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -17,6 +16,12 @@ public class NoteController {
 
     public NoteController(NoteRepository noteRepository) {
         this.noteRepository = noteRepository;
+    }
+
+    // 🏠 Root endpoint for Render and testing
+    @GetMapping("/")
+    public String home() {
+        return "✅ Notes API is running and connected successfully!";
     }
 
     // 🟢 GET all notes
